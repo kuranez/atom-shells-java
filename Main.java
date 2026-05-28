@@ -32,7 +32,7 @@ public class Main {
             );
         
         System.out.println(
-            "Verteilung der Elektronen in " + hydrogen.getName() + " : "
+            "Verteilung der Elektronen in " + hydrogen.getName() + " (H)" + " : "
             );
         
             hydrogen.distributeElectrons();
@@ -58,7 +58,7 @@ public class Main {
             );
         
         System.out.println(
-            "Verteilung der Elektronen in " + helium.getName() + " : "
+            "Verteilung der Elektronen in " + helium.getName() + " (He)" + " : "
             );
         
             helium.distributeElectrons();
@@ -84,7 +84,7 @@ public class Main {
             );
         
         System.out.println(
-            "Verteilung der Elektronen in " + lithium.getName() + " : "
+            "Verteilung der Elektronen in " + lithium.getName() + " (Li)" + " : "
             );
         
             lithium.distributeElectrons();
@@ -110,7 +110,7 @@ public class Main {
             );
         
         System.out.println(
-            "Verteilung der Elektronen in " + beryllium.getName() + " : "
+            "Verteilung der Elektronen in " + beryllium.getName() + " (Be)" + " : "
             );
         
             beryllium.distributeElectrons();
@@ -136,7 +136,7 @@ public class Main {
             );
 
         System.out.println(
-            "Verteilung der Elektronen in " + oxygen.getName() + " : "
+            "Verteilung der Elektronen in " + oxygen.getName() + " (O)" + " : "
             );
         
             oxygen.distributeElectrons();
