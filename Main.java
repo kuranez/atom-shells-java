@@ -10,85 +10,133 @@ public class Main {
         DecimalFormat df =
             new DecimalFormat("#.##");
 
-        // Erstellen von Atom-Objekten
-        // Wasserstoffähnliche Kerne: Z = 1, 2, 8, ...
+        // Erstellen von Atom-Objekten und Ausgabe ihrer Eigenschaften
+        // Energie für Wasserstoffähnliche Kerne: Z = 1, 2, 8, ...
+        // Verteilung der Elektronen auf die Schalen und Ausgabe der Elektronenkonfiguration
 
+        // Wasserstoff
         Atom hydrogen = new Atom(
-            "Wasserstoff (H)", 
+            "Wasserstoff", 
             1, 
             1 
         );
 
+        System.out.println(
+            hydrogen.getName() + " : "
+            );
+
+        System.out.println(
+            "Energie in der ersten Schale : " 
+            + df.format(hydrogen.calculateEnergyLevel(1, 1)) 
+            + " eV" + " (H)"
+            );
+        
+        System.out.println(
+            "Verteilung der Elektronen in " + hydrogen.getName() + " : "
+            );
+        
+            hydrogen.distributeElectrons();
+            hydrogen.printConfiguration();
+
+        // Helium
         Atom helium = new Atom(
-            "Helium (He+)", 
+            "Helium", 
             2, 
             2 
         );
 
+        System.out.println(
+            helium.getName() + " : "
+            );
+        
+        System.out.println(
+            "Energie in der ersten Schale : " 
+            + df.format(helium.calculateEnergyLevel(2, 1)) 
+            + " eV" + " (He+)"
+            );
+        
+        System.out.println(
+            "Verteilung der Elektronen in " + helium.getName() + " : "
+            );
+        
+            helium.distributeElectrons();
+            helium.printConfiguration();
+
+        // Lithium
         Atom lithium = new Atom(
-            "Lithium (Li2+)", 
+            "Lithium", 
             3, 
             3 
         );
 
+        System.out.println(
+            lithium.getName() + " : "
+            );
+        
+        System.out.println(
+            "Energie in der ersten Schale : " 
+            + df.format(lithium.calculateEnergyLevel(3, 1)) 
+            + " eV" + " (Li2+)"
+            );
+        
+        System.out.println(
+            "Verteilung der Elektronen in " + lithium.getName() + " : "
+            );
+        
+            lithium.distributeElectrons();
+            lithium.printConfiguration();
+
+        // Beryllium
         Atom beryllium = new Atom(
-            "Beryllium (Be3+)", 
+            "Beryllium", 
             4, 
             4 
         );
 
+        System.out.println(
+            beryllium.getName() + " : "
+            );
+        
+        System.out.println(
+            "Energie in der ersten Schale : " 
+            + df.format(beryllium.calculateEnergyLevel(4, 1)) 
+            + " eV" + " (Be3+)"
+            );
+        
+        System.out.println(
+            "Verteilung der Elektronen in " + beryllium.getName() + " : "
+            );
+        
+            beryllium.distributeElectrons();
+            beryllium.printConfiguration();
+
+        // Sauerstoff
         Atom oxygen = new Atom(
-            "Sauerstoff (O7+)", 
+            "Sauerstoff", 
             8, 
             8 
-            // maximale Elektronenzahl kann hier eingetragen werden, 
-            // aber für die Energie-Berechnung im Bohrmodell ist sie nicht relevant
         );
 
-        // Ausgabe der Atom-Informationen
-        // Berechnung der Energie für die erste Schale (n = 1) und Ausgabe der Ergebnisse
-        double energy = 
-            hydrogen.calculateEnergyLevel(1, 1);
-
         System.out.println(
-            hydrogen.getName()
-            + " : Energie in der ersten Schale : " + df.format(energy) + " eV"
+            oxygen.getName() + " : "
             );
 
-        double heliumEnergy = 
-        // Berechnung der Energie für Helium in der ersten Schale
-        // Helium hat 2 Protonen, daher Z = 2
-        // Hauptquantenzahl n = 1 für die erste Schale
-            helium.calculateEnergyLevel(2, 1);
+        System.out.println(
+            "Energie in der ersten Schale : " 
+            + df.format(oxygen.calculateEnergyLevel(8, 1)) 
+            + " eV" + " (O7+)"
+            );
 
         System.out.println(
-            helium.getName()
-            + " : Energie in der ersten Schale : " + df.format(heliumEnergy) + " eV"
+            "Verteilung der Elektronen in " + oxygen.getName() + " : "
             );
         
-        double lithiumEnergy = 
-            lithium.calculateEnergyLevel(3, 1);
-        
-        System.out.println(
-            lithium.getName()
-            + " : Energie in der ersten Schale : " + df.format(lithiumEnergy) + " eV"
-            );
-        
-        double berylliumEnergy = 
-            beryllium.calculateEnergyLevel(4, 1);
-        
-        System.out.println(
-            beryllium.getName()
-            + " : Energie in der ersten Schale : " + df.format(berylliumEnergy) + " eV"
-            );
-
-        double oxygenEnergy = 
-            oxygen.calculateEnergyLevel(8, 1);
+            oxygen.distributeElectrons();
+            oxygen.printConfiguration();
 
         System.out.println(
-            oxygen.getName()
-            + " : Energie in der ersten Schale : " + df.format(oxygenEnergy) + " eV"
-            );
+        "Hauptquantenzahl n : aktuelle Elektronen / maximale Elektronen"
+        );
     }
 
 }
