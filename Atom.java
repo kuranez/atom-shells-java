@@ -1,7 +1,8 @@
 // Atom.java
 // Klasse zur Darstellung eines Atoms im Bohr'schen Atommodell
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
+// Importieren der ArrayList-Klasse für die Verwaltung der Schalen im Atom
 
 public class Atom {
 
@@ -25,13 +26,13 @@ public class Atom {
                 shells.add(new Shell(2));
                 shells.add(new Shell(3));
         // Elektronen auf die Schalen verteilen
-        distributeElectrons();
+        getConfiguration();
     }
 
     //Methoden
 
     // Methode zur Verteilung der Elektronen auf die Schalen
-    public void distributeElectrons() {
+    public void getConfiguration() {
         int remainingElectrons = electronCount;
         for (Shell shell : shells) {
             while (remainingElectrons > 0 && shell.getCurrentElectrons() < shell.getMaxElectrons()) {
@@ -41,19 +42,28 @@ public class Atom {
         }
     }
 
+    // Liefert die Elektronenkonfiguration als Text für die Anzeige im GUI
+    public String getConfigurationText() {
+        StringBuilder configurationText = new StringBuilder();
+
+        for (Shell shell : shells) {
+            configurationText
+                .append("n=")
+                .append(shell.getN())
+                .append(" : ")
+                .append(shell.getCurrentElectrons())
+                .append("/")
+                .append(shell.getMaxElectrons())
+                .append(" Elektronen")
+                .append(System.lineSeparator());
+        }
+
+        return configurationText.toString().trim();
+    }
+
     // Methode zur Ausgabe der Elektronenkonfiguration des Atoms
     public void printConfiguration() {
-        for (Shell shell : shells) {
-
-            System.out.println(
-                "n=" + shell.getN()
-                + " : "
-                + shell.getCurrentElectrons()
-                + "/"
-                + shell.getMaxElectrons()
-                + " Elektronen"
-            );
-        }
+        System.out.println(getConfigurationText());
     }
 
     // Methode zur Berechnung der Energie eines Elektrons in einer bestimmten Schale
@@ -75,6 +85,10 @@ public class Atom {
 
     public int getElectronCount() {
         return electronCount;
+    }
+
+    public ArrayList<Shell> getShells() {
+    return shells;
     }
 
 }

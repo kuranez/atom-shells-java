@@ -30,6 +30,42 @@ Skalierung mit $Z^2$ für wasserstoffähnliche Kerne.
 -13.6 (Z * Z) / (n * n)
 ```
 
--13.6 : Grundenergie von Wasserstoff
-Z : Atomzahl
-n : Anzahl von Elektronen
+**-13.6 eV** : Grundenergie von Wasserstoff <br>
+**Z** : Atomzahl <br>
+**n** : Anzahl von Elektronen
+
+## Implementierung von Schalen
+
+### Vorher
+
+```text
+Atom kennt nur:
+- Protonenzahl
+- Energieberechnung
+```
+
+### Nachher
+
+```text
+Atom besitzt:
+- mehrere Shell-Objekte
+- Elektronenkonfiguration
+```
+
+### Architekturgrundsatz
+
+**`Atom.java`** enthält:
+
+```text
+Physik + Daten
+```
+
+**`AtomPanelRenderer.java`** enthält:
+
+```text
+Grafische Darstellung
+```
+
+---
+
+**Author** : kuranez

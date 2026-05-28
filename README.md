@@ -2,13 +2,36 @@
 
 Einfaches Atommodell in Java.
 
-**Features**
+## **Features**
+- Grafische Darstellung der Elektronenkonfiguration im Schalenmodell
+- Berechnung von Energie in der 1. Schale nach Bohr'schem Atommodell für Wasserstoffähnliche Kerne ( $H$, $He^+$, $Li^{2+}$, $Be^{3+}$, $O^{7+}$ )
 
-- Wasserstoffähnliche Kerne ( $H$, $He^+$, $Li^{2+}$, $Be^{3+}$, $O^{7+}$ )
-- Berechnung von Energie in der 1. Schale nach Bohr'schem Atommodell
-- Darstellung der Elektronenkonfiguration im Schalenmodell
 
-**Beispiel für Output**
+## Architektur
+
+```yaml
+Main
+│ 
+├── Atom 
+│     ├── Shell[] 
+│     ├── calculateConfiguration() 
+│     └── calculateEnergy() 
+│ 
+├── Shell 
+│     ├── n 
+│     ├── maxElectrons 
+│     └── electrons 
+│ 
+└── AtomPanelRenderer       
+	├── drawAtom()
+    └── drawShell()
+```
+
+## Meilenstein: Grafische Darstellung von Schalen
+
+![screenshots/oxygen.png](screenshots/oxygen.png)
+
+## Berechnung unter der Haube
 
 ```
 Sauerstoff (Z = 8) : 

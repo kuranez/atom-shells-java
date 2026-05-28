@@ -1,151 +1,31 @@
-import java.text.DecimalFormat;
+// Main.java 
+// Hauptprogramm, das die Atom-Objekte erstellt 
+// und das GUI-Fenster mit dem AtomPanel anzeigt
 
+import javax.swing.JFrame; 
+// Importieren der JFrame-Klasse für die Erstellung des Hauptfensters
 
 public class Main {
+
     public static void main(String[] args) {
-        
-        // System.out.println("Test!");
-        
-        // Dezimalstellen anzeigen: 2
-        DecimalFormat df =
-            new DecimalFormat("#.##");
 
-        // Erstellen von Atom-Objekten und Ausgabe ihrer Eigenschaften
-        // Energie für Wasserstoffähnliche Kerne: Z = 1, 2, 8, ...
-        // Verteilung der Elektronen auf die Schalen und Ausgabe der Elektronenkonfiguration
+        Atom oxygen =
+            new Atom("Sauerstoff", 8,   8);
 
-        // Wasserstoff
-        Atom hydrogen = new Atom(
-            "Wasserstoff", 
-            1, 
-            1 
+        oxygen.getConfiguration();
+
+        JFrame frame =
+            new JFrame("Schalenmodell von " + oxygen.getName());
+
+        frame.setSize(800, 800);
+
+        frame.setDefaultCloseOperation(
+            JFrame.EXIT_ON_CLOSE
         );
 
-        System.out.println(
-            hydrogen.getName() + " (Z = " + hydrogen.getProtonNumber() + ") : "
-            );
+        // Add AtomPanel to the frame
+        frame.add(new AtomPanelRenderer(oxygen));
 
-        System.out.println(
-            "Energie in der ersten Schale : " 
-            + df.format(hydrogen.calculateEnergyLevel(1, 1)) 
-            + " eV" + " (H)"
-            );
-        
-        System.out.println(
-            "Verteilung der Elektronen in " + hydrogen.getName() + " (H)" + " : "
-            );
-        
-            hydrogen.distributeElectrons();
-            hydrogen.printConfiguration();
-
-        System.out.println();
-
-        // Helium
-        Atom helium = new Atom(
-            "Helium", 
-            2, 
-            2 
-        );
-
-        System.out.println(
-            helium.getName() + " (Z = " + helium.getProtonNumber() + ") : "
-            );
-        
-        System.out.println(
-            "Energie in der ersten Schale : " 
-            + df.format(helium.calculateEnergyLevel(2, 1)) 
-            + " eV" + " (He+)"
-            );
-        
-        System.out.println(
-            "Verteilung der Elektronen in " + helium.getName() + " (He)" + " : "
-            );
-        
-            helium.distributeElectrons();
-            helium.printConfiguration();
-
-        System.out.println();
-        
-        // Lithium
-        Atom lithium = new Atom(
-            "Lithium", 
-            3, 
-            3 
-        );
-
-        System.out.println(
-            lithium.getName() + " (Z = " + lithium.getProtonNumber() + ") : "
-            );
-        
-        System.out.println(
-            "Energie in der ersten Schale : " 
-            + df.format(lithium.calculateEnergyLevel(3, 1)) 
-            + " eV" + " (Li2+)"
-            );
-        
-        System.out.println(
-            "Verteilung der Elektronen in " + lithium.getName() + " (Li)" + " : "
-            );
-        
-            lithium.distributeElectrons();
-            lithium.printConfiguration();
-
-        System.out.println();
-
-        // Beryllium
-        Atom beryllium = new Atom(
-            "Beryllium", 
-            4, 
-            4 
-        );
-
-        System.out.println(
-            beryllium.getName() + " (Z = " + beryllium.getProtonNumber() + ") : "
-            );
-        
-        System.out.println(
-            "Energie in der ersten Schale : " 
-            + df.format(beryllium.calculateEnergyLevel(4, 1)) 
-            + " eV" + " (Be3+)"
-            );
-        
-        System.out.println(
-            "Verteilung der Elektronen in " + beryllium.getName() + " (Be)" + " : "
-            );
-        
-            beryllium.distributeElectrons();
-            beryllium.printConfiguration();
-
-        System.out.println();
-
-        // Sauerstoff
-        Atom oxygen = new Atom(
-            "Sauerstoff", 
-            8, 
-            8 
-        );
-
-        System.out.println(
-            oxygen.getName() + " (Z = " + oxygen.getProtonNumber() + ") : "
-            );
-
-        System.out.println(
-            "Energie in der ersten Schale : " 
-            + df.format(oxygen.calculateEnergyLevel(8, 1)) 
-            + " eV" + " (O7+)"
-            );
-
-        System.out.println(
-            "Verteilung der Elektronen in " + oxygen.getName() + " (O)" + " : "
-            );
-        
-            oxygen.distributeElectrons();
-            oxygen.printConfiguration();
-
-        System.out.println();
-        System.out.println(
-        "Hauptquantenzahl n : aktuelle Elektronen / maximale Elektronen"
-        );
+        frame.setVisible(true);
     }
-
 }
