@@ -45,3 +45,7 @@ n=3 : 6/18 Elektronen
 Hauptquantenzahl n : aktuelle Elektronen / maximale Elektronen
 ```
 
+## Siehe auch
+
+- [atom-js](https://github.com/kuranez/atom-js) - Gleiches Projekt in JS 
+- [atom-orbitals-java (Orbitalmodell)](https://github.com/kuranez/atom-orbitals-java) - Einfaches Orbitalmodell
