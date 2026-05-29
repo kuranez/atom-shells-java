@@ -1,4 +1,4 @@
-# atom-java
+# atom-shells-java
 
 Einfaches Atommodell in Java.
 
@@ -44,3 +44,4 @@ n=3 : 6/18 Elektronen
 
 Hauptquantenzahl n : aktuelle Elektronen / maximale Elektronen
 ```
+

@@ -1,8 +1,10 @@
-# Schalenmodell - Implementierung in Java - Theorie
+# Schalenmodell - Implementierung in Java
 
 ## Ziel der Entwicklung
 
 Das Projekt zeigt die Entwicklung vom einfachen Atommodell bis zur grafischen Darstellung des Bohr'schen Schalenmodells. Die älteren Dateien mit dem Suffix `_old` dokumentieren die Zwischenstände, die aktuellen Dateien zeigen die aufgeräumte und erweiterte Version.
+
+Im aktuellen Stand wurde die Anwendung weiter vereinfacht: `Main.java` startet nur noch ein einzelnes Beispielatom, während die ältere Konsolenversion in `old/Main_old.java` mehrere Atome nacheinander ausgegeben hat.
 
 ## Fachliche Grundlage
 
@@ -75,7 +77,17 @@ Der grafische Stand ergänzt die Darstellung des Atoms um eine GUI. Dafür wurde
 
 [Release v0.d](https://github.com/kuranez/atom-java/releases/tag/v0.d)
 
-### Aktuelle Verfeinerung des Renderers
+### v0.e - Rework des Renderers
+
+In v0.e wurde `AtomPanelRenderer` weiter aufgeteilt und lesbarer gemacht. Der Release beschreibt die Umstrukturierung von `paintComponent()` hin zu kleinen Zeichenmethoden.
+
+Die inhaltliche Änderung gegenüber v0.d ist vor allem organisatorisch:
+
+- `paintComponent()` delegiert nur noch an `drawAtom()`
+- die Zeichnung ist in klar getrennte Schritte für Titel, Text, Kern, Schalen und Elektronen aufgeteilt
+- Layout-Konstanten wie Mittelpunkt, Kernradius und Schalenabstand sind zentral im Renderer definiert
+
+[Release v0.e](https://github.com/kuranez/atom-shells-java/releases/tag/v0.e)
 
 #### `AtomPanelRenderer_old.java` vs. `AtomPanelRenderer.java`
 
@@ -87,6 +99,8 @@ Die Datei `AtomPanelRenderer_old.java` enthält noch die frühe Monolith-Version
 - Kern zeichnen
 - Schalen zeichnen
 - Elektronen zeichnen
+
+In der aktuellen `AtomPanelRenderer.java` ist die Darstellung zusätzlich an den tatsächlichen GUI-Stand angepasst. Der Renderer arbeitet mit festen Layout-Konstanten und nutzt den Zustand des aktuellen Atoms direkt aus `Main.java`, das im Moment das Wasserstoff-Beispiel anzeigt.
 
 Die aktuelle `AtomPanelRenderer.java` trennt diese Arbeit in kleine Methoden:
 
@@ -102,6 +116,18 @@ Die aktuelle `AtomPanelRenderer.java` trennt diese Arbeit in kleine Methoden:
 
 Das macht den Code besser lesbar und leichter wartbar, weil jede Aufgabe nur noch an einer Stelle beschrieben ist.
 
+## Screenshots
+
+Die folgenden Beispiele zeigen den aktuellen GUI-Stand des Schalenmodells als Tabelle.
+
+| Atom | Screenshot |
+| --- | --- |
+| Wasserstoff | ![Wasserstoff](../../screenshots/hydrogen.png) |
+| Helium | ![Helium](../../screenshots/helium.png) |
+| Berillium | ![Berillium](../../screenshots/berillium.png) |
+| Lithium | ![Lithium](../../screenshots/lithium.png) |
+| Sauerstoff | ![Sauerstoff](../../screenshots/oxygen.png) |
+
 ## Architekturidee
 
 Die Trennung der Verantwortlichkeiten ist bewusst einfach gehalten:
@@ -109,7 +135,7 @@ Die Trennung der Verantwortlichkeiten ist bewusst einfach gehalten:
 - `Atom.java` enthält Physik und Zustandsdaten
 - `Shell.java` kapselt die Eigenschaften einer Schale
 - `AtomPanelRenderer.java` ist nur für die grafische Darstellung zuständig
-- `Main.java` startet die Anwendung
+- `Main.java` startet die Anwendung und zeigt das aktuelle Beispielatom
 
 So bleibt das Modell unabhängig von der Darstellung, und die Darstellung wiederum unabhängig von der Konsolenlogik aus den `_old` Dateien.
 
