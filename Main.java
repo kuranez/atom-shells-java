@@ -9,13 +9,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Atom oxygen =
-            new Atom("Sauerstoff", 8,   8);
+        Atom hydrogen =
+            new Atom("Wasserstoff", 1,   1);
 
-        oxygen.getConfiguration();
+        hydrogen.getConfiguration();
 
         JFrame frame =
-            new JFrame("Schalenmodell von " + oxygen.getName());
+            new JFrame("Schalenmodell von " + hydrogen.getName());
 
         frame.setSize(800, 800);
 
@@ -24,7 +24,7 @@ public class Main {
         );
 
         // Add AtomPanel to the frame
-        frame.add(new AtomPanelRenderer(oxygen));
+        frame.add(new AtomPanelRenderer(hydrogen));
 
         frame.setVisible(true);
     }
